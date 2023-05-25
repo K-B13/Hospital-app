@@ -1,0 +1,19 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Patients</h1>
+
+<div id="patients">
+  <% @patients.each do |patient| %>
+    <%= render patient %>
+    <p>
+      <%= link_to "Show this patient", patient %>
+    </p>
+    <%= link_to 'Delete Patient', patient_path(patient),
+      data: { turbo_method: :delete, 
+      turbo_confirm: "Are you sure you want to delete #{patient.first_name} #{patient.last_name}" 
+      }
+      %>
+  <% end %>
+</div>
+
+<%= link_to "New patient", new_patient_path %>
